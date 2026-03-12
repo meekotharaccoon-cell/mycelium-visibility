@@ -1,37 +1,57 @@
-# 👁️ Mycelium Visibility Agent
+# Mycelium Visibility
 
-Builds audience autonomously. Posts daily. Finds new communities. Tracks what works.
+> SolarPunk's signal layer. 203 posts queued. Resonance: 60/100. First contact: still waiting.
 
-## What it posts where
+**Part of the [SolarPunk organism](https://meekotharaccoon-cell.github.io/meeko-nerve-center/solarpunk.html)**
 
-| Platform | Content | Frequency |
-|----------|---------|-----------|
-| Dev.to | Technical articles about the system | Weekly |
-| Mastodon | Short updates + art previews | Daily |
-| Reddit | Community-specific posts (r/opensource, r/selfhosted, r/webdev) | Weekly per sub |
-| HackerNews | Show HN when major milestone hit | On trigger |
-| Product Hunt | Full launch | Once |
+---
 
-## Communities being targeted
+## What this is
 
-**Tech communities** (architecture angle):
-- r/opensource, r/selfhosted, r/webdev, r/Python, r/github
+Mycelium Visibility is SolarPunk's outreach and distribution arm. Every cycle it:
 
-**Humanitarian communities** (mission angle):
-- r/Palestine, r/humanitarianaid, r/nonprofit, r/charity
+- Generates social posts, tweet threads, and newsletter issues
+- Queues outreach to newsletters (TLDR, Ben's Bites, Indie Hackers, etc.)
+- Tracks resonance: stars, email replies, HN mentions, forks
+- Publishes to DEV.to
+- Watches for the first stranger who discovers SolarPunk independently (`FIRST_CONTACT`)
 
-**Art communities** (art angle):
-- r/DigitalArt, r/generativeart, r/NFT (for the anti-NFT angle)
+---
 
-**Grant/funding communities** (knowledge angle):
-- r/artbusiness, r/grants, r/nonprofit
+## Current state (Cycle 51)
 
-## Rules (keeps accounts healthy)
-- Never post same content twice
-- Space posts minimum 3 days per subreddit
-- Always genuine value, never spam
-- Track karma and adjust if flagged
+| Metric | Value |
+|--------|-------|
+| Posts queued | 203 |
+| Resonance score | 60/100 (LOUD) |
+| GitHub stars | 1 |
+| Email replies | 10 |
+| HN mentions | 2 |
+| First contact | Not yet |
 
-## All repos
-- [mycelium-core](https://github.com/meekotharaccoon-cell/mycelium-core) — full map
-- [meeko-nerve-center](https://github.com/meekotharaccoon-cell/meeko-nerve-center) — central system
+---
+
+## Engines involved
+
+`SOCIAL_PROMOTER` · `VIRALITY_ENGINE` · `RESONANCE_ENGINE` · `RESONANCE_CONVERTER` · `DEV_TO_PUBLISHER` · `AGENT_TWEET_WRITER` · `NEWSLETTER_ENGINE` · `SUBSTACK_ENGINE` · `FIRST_CONTACT` · `SOCIAL_DASHBOARD` · `BRIDGE_BUILDER` · `EMAIL_OUTREACH`
+
+---
+
+## The FIRST_CONTACT watch
+
+SolarPunk has an engine that does one thing: watches for the first external person to discover the system independently, without being sent a link. When it happens, `data/first_contact.json` gets written permanently. It's a milestone the organism is waiting for.
+
+Live watch: [first_contact.html](https://meekotharaccoon-cell.github.io/meeko-nerve-center/first_contact.html)
+
+---
+
+## Part of the organism
+
+- 🧠 **Nerve center**: [meeko-nerve-center](https://github.com/meekotharaccoon-cell/meeko-nerve-center)
+- 📁 **Social dashboard**: [social.html](https://meekotharaccoon-cell.github.io/meeko-nerve-center/social.html)
+- 📊 **Resonance**: [resonance.html](https://meekotharaccoon-cell.github.io/meeko-nerve-center/resonance.html)
+- 📡 **Launch post queue**: [launch.html](https://meekotharaccoon-cell.github.io/meeko-nerve-center/launch.html)
+
+---
+
+*Founded by Meeko. Runs itself. For Palestine.*
