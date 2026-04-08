@@ -1,0 +1,51 @@
+name: Daily Visibility Post
+
+on:
+  schedule:
+    # Run daily at 14:00 UTC (morning US, evening EU)
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+    # Allow manual trigger from GitHub Actions UI
+
+permissions:
+  contents: read
+
+jobs:
+  generate-and-post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Create data directory
+        run: mkdir -p data
+
+      - name: Generate content
+        run: python agent/content_generator.py
+
+      - name: Post to platforms
+        env:
+          BLUESKY_IDENTIFIER: ${{ secrets.BLUESKY_IDENTIFIER }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: python agent/visibility_agent.py
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-logs-${{ github.run_number }}
+          path: |
+            data/posts_log.json
+            data/content_queue.json
+            data/crypto_prices.json
+          retention-days: 30
